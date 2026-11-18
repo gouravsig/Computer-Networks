@@ -5,6 +5,7 @@
 void nrzL(char data[]) {
     printf("\nPolar NRZ-L:\n");
 
+    //'\0' this represents null character
     for (int i = 0; data[i] != '\0'; i++) {
         if (data[i] == '1')
             printf("-V ");
@@ -37,7 +38,7 @@ int main() {
 
     nrzL(data);
     nrzI(data);
-
+    
     printf("\n");
 
     return 0;

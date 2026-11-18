@@ -4,7 +4,6 @@
 #define FLAG 'F'
 #define ESC  'E'
 
-/* Stuffs ESC before any FLAG or ESC in data, and wraps with FLAGs */
 void characterStuffing(const char data[], char stuffed[]) {
     int j = 0;
 
@@ -21,7 +20,6 @@ void characterStuffing(const char data[], char stuffed[]) {
     stuffed[j] = '\0';
 }
 
-/* Removes framing FLAGs and stuffed ESC characters to recover original data */
 void characterDestuffing(const char stuffed[], char destuffed[]) {
     int len = strlen(stuffed);
     int j = 0;
