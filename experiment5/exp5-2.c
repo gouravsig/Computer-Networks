@@ -26,10 +26,10 @@ int main() {
         printf("Enter your choice: ");
         
         if (scanf("%d", &choice) != 1) {
-            while (getchar() != '\n'); // clear buffer
+            while (getchar() != '\n');
             continue;
         }
-        getchar(); // consume newline
+        getchar(); 
 
         switch (choice) {
             case 1:
@@ -39,7 +39,6 @@ int main() {
                 }
                 printf("\n--- PHASE 1: Connection Establishment ---\n");
                 
-                // Random sequence numbers for realism
                 client_seq = rand() % 10000 + 1000;
                 server_seq = rand() % 10000 + 5000;
                 
@@ -65,22 +64,19 @@ int main() {
                 int num_packets;
                 printf("Enter the number of data packets to send: ");
                 scanf("%d", &num_packets);
-                getchar(); // consume newline
-                
+                getchar(); 
                 for (int i = 1; i <= num_packets; i++) {
                     char data[256];
                     printf("\nEnter custom data for Packet %d: ", i);
                     fgets(data, sizeof(data), stdin);
-                    data[strcspn(data, "\n")] = 0; // Remove newline
-                    
+                    data[strcspn(data, "\n")] = 0; 
                     int data_len = strlen(data);
-                    if (data_len == 0) data_len = 1; // Prevent zero-length seq increment
+                    if (data_len == 0) data_len = 1; 
+
                     
-                    // Client sends DATA
                     printf("[Client] -> [Server] : [DATA] Seq=%u, Payload=\"%s\"\n", client_seq, data);
                     
-                    // Server replies with ACK
-                    client_seq += data_len; // Sequence number increases by data length
+                    client_seq += data_len; 
                     printf("[Server] -> [Client] : ACK (Ack=%u)\n", client_seq);
                 }
                 break;
